@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Home</title>
+</head>
+<body>
+    <div class="login">
+        <header>Enter your username</header>
+        <form class="login-form">
+            <input type="text" class="login-input" placeholder="Type it here ...">
+            <button>Submit</button>
+        </form>
+    </div>
+    <div class="room" style="display: none;">
+        <div class="join">
+            <header>Join the room</header>
+            <form class="join-form">
+                <input type="text" class="join-input" placeholder="Enter room's name ...">
+                <button>Join</button>
+            </form>
+        </div>
+        <div class="status-index">
+            <div class="chat">
+                <i class="fas fa-comment-dots"></i>
+                <span></span>
+                <div class="con">
+                    <header>Chat with online users:</header>
+                    <form class="chat-form">
+                        <input type="text" class="chat-input" placeholder="Type message ...">
+                        <button>Send</button>
+                    </form>
+                    <div class="chat-box"></div>
+                </div>
+            </div>
+            <div class="active-users">
+                <i class="fas fa-users"></i>
+                <span></span>
+                <div class="con">
+                    <header>Active users:</header>
+                    <div class="status-container"></div>
+                </div>
+            </div>
+            <div class="available-rooms">
+                <i class="fas fa-boxing-glove"></i>
+                <span></span>
+                <div class="con">
+                    <header>Existable rooms:</header>
+                    <div class="rooms"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>

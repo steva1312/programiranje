@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body {
+    padding: 20px;
+}
+
+h1 {
+    font-family: fantasy;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+ul {
+    width: 160px;
+    margin-bottom: 20px;
+}
+
+a > img {
+    width: 50px;
+}
+a img:hover {
+    top: 79%;
+    transition: .5s;
+}
+
+a {
+    color: gray;
+    text-decoration: none;
+    transition: .3s;
+    transform-origin: right;
+}
+a:hover {
+    color: red;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+img {
+    width: 350px;
+}
+
+[src="./left-arrow.png"] {
+    position: absolute;
+    top: 80%;
+    left: 20%;
+}
+[src="./right-arrow.png"] {
+    position: absolute;
+    top: 80%;
+    right: 20%;
+}
+[src="./home-run.png"] {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.center-x {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* JavaScript animacija */
+.animate {
+    position: relative;
+    margin-bottom: 50px;
+    display: flex;
+}
+.animate-letter {
+    color: red;
+    position: absolute;
+    opacity: 0;
+    bottom: 10px;
+    animation: animate .3s linear;
+    animation-fill-mode: forwards;
+    margin-right: 10px;
+}
+
+@keyframes animate {
+    100% {
+        bottom: -40px;
+        opacity: 1;
+    }
+}

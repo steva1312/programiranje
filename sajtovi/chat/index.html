@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <title>Chat app</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto Slab', sans-serif;
+        }
+        body {
+            background: #adebeb;
+            min-height: 100vh;
+        }
+        .login-field {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -200%);
+        }
+        h1 {
+            font-size: 2em;
+            color: blue;
+        }
+        input {
+            background: transparent;
+            border: gray solid 2px;
+            padding: 2px;
+            outline: none;
+            height: 2.5em;
+            font-size:  1.1em;
+        }
+        button {
+            background: transparent;
+            border: blue solid 2px;
+            padding: 2px;
+            height: 2.5em;
+            font-size: 1.1em;
+            color: blue;
+            transition: all ease-in 300ms;
+        }
+        button:hover {
+            background: blue;
+            color: #adebeb;
+        }
+        input:focus {
+            border: blue 2px solid;
+        }
+        .msg-field {
+            display: none;
+        }
+        .status-container {
+            position: absolute;
+            top: 0;
+            right: 5%;
+        }
+        .status-header {
+            color: blue;
+        }
+        .err-header {
+            display: none;
+            position: absolute;
+            top: 100%;
+        }
+        .msg-el {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="login-field">
+        <h1 class="login-header">Enter the chat</h1>
+        <form action="" class="login-form">
+            <input type="text" placeholder="Enter your nickname" class="login-input">
+            <button>Submit</button>
+            <h3 class="err-header">Username is already taken</h3>
+        </form>
+    </div>
+
+    <div class="msg-field">
+        <h1 class="msg-header">Write some messages</h1>
+        <div class="msg-container"></div>
+        <div class="status-container"></div>
+        <form action="" class="msg-form">
+            <input type="text" placeholder="Enter message text" class="msg-input">
+            <button>Send</button>
+        </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+
+        const socket = io()
+        const loginField = document.querySelector('.login-field')
+        const loginForm = document.querySelector('.login-form')
+        const loginInput = document.querySelector('.login-input')
+        const msgField = document.querySelector('.msg-field')
+        const msgCon = document.querySelector('.msg-container')
+        const statusCon = document.querySelector('.status-container')
+        const msgForm = document.querySelector('.msg-form')
+        const msgInput = document.querySelector('.msg-input')
+        const errHeader = document.querySelector('.err-header')
+        let username
+        let activeUsers
+
+        const clearEl = el => {
+            while(el.firstChild) {
+                el.removeChild(el.firstChild)
+            }
+        }
+
+        loginForm.addEventListener('submit', e => {
+            e.preventDefault()
+            if(loginInput.value === '' || loginInput.value[0] === ' ') {
+                loginInput.value = ''
+                return
+            }
+            errHeader.style.display = 'none'
+            socket.emit('login', loginInput.value)
+            socket.on('handle-form', () => {
+                username = loginInput.value
+                msgField.style.display = 'block'
+                loginField.style.display = 'none'
+            })
+            clearEl(msgCon)
+        })
+
+        socket.on('login', name => {
+            
+        })
+        socket.on('get-usernames', arr => {
+            clearEl(statusCon)
+            const statusHeader = document.createElement('h2')
+            statusHeader.classList.add('status-header')
+            statusHeader.textContent = 'Active users: '
+            statusCon.appendChild(statusHeader)
+            activeUsers = arr.filter(name => name != username)
+            for(let i = 0; i < activeUsers.length; i++) {
+                const activeUserEl = document.createElement('h3')
+                activeUserEl.textContent = activeUsers[i]
+                statusCon.appendChild(activeUserEl)
+            }
+        })
+        socket.on('taken-username', () => {
+            errHeader.style.display = 'block'
+        })
+
+        msgForm.addEventListener('submit', e => {
+            e.preventDefault()
+            if(msgInput.value === '' || msgInput.value[0] === ' ')return
+            const msgObj = {
+                name: username,
+                msg: msgInput.value
+            }
+            socket.emit('send-message', msgObj)
+
+            const msgEl = document.createElement('div')
+            msgEl.classList.add('msg-el')
+            msgCon.appendChild(msgEl)
+            const msgUsername = document.createElement('h3')
+            msgUsername.style.color = 'red'
+            msgUsername.textContent = 'You'
+            msgEl.appendChild(msgUsername)
+            const msgText = document.createElement('h4')
+            msgText.textContent = `: ${msgInput.value}`
+            msgEl.appendChild(msgText)
+
+            msgInput.value = ''
+        })
+        socket.on('send-message', data => {
+            const msgEl = document.createElement('div')
+            msgEl.classList.add('msg-el')
+            msgCon.appendChild(msgEl)
+            
+            const msgUsername = document.createElement('h3')
+            msgUsername.style.color = 'blue'
+            msgUsername.textContent = data.name
+            msgEl.appendChild(msgUsername)
+
+            const msgText = document.createElement('h4')
+            msgText.textContent = `:  ${data.msg}`
+            msgEl.appendChild(msgText)
+        })
+
+        socket.on('user-text', data => {
+            const userTextEl = document.createElement('h4')
+            userTextEl.style.color = 'gray'
+            userTextEl.textContent = `${data.name} ${data.text} the chat`
+            msgCon.appendChild(userTextEl)
+        })
+    </script> 
+</body>
+</html>

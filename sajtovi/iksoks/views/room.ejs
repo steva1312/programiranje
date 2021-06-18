@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>
+        <%= room %> 
+    </title>
+</head>
+<body>
+    <div class="waiting" style="display: none;">Waiting for nother player to join...</div>
+
+    <div class="battle">
+        <div class="p1-info">
+            <header class="p1">Prda</header>
+            <header class="s1" id="0">0</header>
+        </div>
+        <div class="vs">
+            <div class="vs-text">VS</div>
+            <div class="dots">:</div>
+        </div>
+        <div class="p2-info">
+            <header class="p2">kokilimo</header>
+            <header class="s2" id="1">0</header>
+        </div>
+    </div>
+    <div class="table"></div>
+    <header class="next">It's you turn ...</header>
+
+
+    <script>
+        const ROOMNAME = '<%- room %>'
+        const USERNAME = '<%- username %>'
+    </script>
+    <script src="/animation.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/room.js"></script>
+</body>
+</html>

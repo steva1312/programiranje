@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Register</title>
+</head>
+<body>
+    <div class="form-card">
+        <header class="form-header">Register</header>
+        <% if(typeof errors != 'undefined') { %>
+            <% errors.forEach(error => { %>
+                <header class="err">
+                    <i class="fa fa-times-circle"></i>
+                    <%= error %>
+                </header>
+            <% }) %>
+        <% } %>
+        <form action="/account/register" method="POST" class="user-form">
+            <div>
+                <label for="username">Enter username:</label>
+                <input type="text" name="username" id="username" required value="<%= typeof username != 'undefined' ? username : '' %>" placeholder="Type it here ...">
+            </div>
+            <div>
+                <label for="password">Enter password:</label>
+                <input type="password" name="password" id="password" required value="<%= typeof password != 'undefined' ? password : '' %>" placeholder="Type it here ...">
+            </div>
+            <div>
+                <label for="password2">Confirm password:</label>
+                <input type="password" name="password2" id="password2" required value="<%= typeof password2 != 'undefined' ? password2 : '' %>" placeholder="Type it here ...">
+            </div>
+            <button type="submit" class="form-btn">Submit</button>
+        </form>
+        <header class="desc-header">Already have an account? <a href="/account/login">Log In </a>then.</header>
+
+        <script src="/animation.js"></script>
+    </div>
+</body>
+</html>

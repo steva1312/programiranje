@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    position: relative;
+    background: linear-gradient(145deg, #00c3ff, #ffff1c);
+}
+
+.table {
+    background-color: black;
+    display: grid;
+    grid-gap: 1%;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    width: 50vw;
+    height: 50vw;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid black;
+}
+
+.cell {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    font-size: 3em;
+    transition: background-color 200ms ease-in;
+}
+
+.x:hover {
+    background-color: rgba(250, 145, 145, 0.9);
+}
+
+.o:hover {
+    background-color: rgb(235, 228, 133);
+}
+
+.red {
+    background: red !important;
+}
+.yellow {
+    background: yellow !important;
+}
+
+.endDiv {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 70vh;
+    width: 60vw;
+    background-color: rgba(25, 11, 117, 0.8);
+    display: none;
+}
+
+.gameEndHeader {
+    color: white;
+}
+
+.restartBtn {
+    outline: none;
+    background: transparent;
+    border: none;
+}
+
+.fa-redo {
+    color: white;
+    font-size: 3em;
+}
+
+.info {
+    position: absolute;
+    left: 2%;
+    top: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: -1;
+}
+
+.logo {
+    width: 100px;
+}
+
+.info h3 {
+    font-size: 1.5em;
+    text-align: center;
+    display: none;
+}
+
+@media (min-width: 700px) {
+    .table {
+        width: 300px;
+        height: 300px;
+    }
+    .info {
+        top: unset;
+        width: 30%;
+        opacity: 0;
+        position: absolute;
+        left: 2%;
+        bottom: 2%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        animation: info 3s ease-out infinite;
+    }
+    .info h3 {
+        display: inline;
+    }
+    @keyframes info{
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+}

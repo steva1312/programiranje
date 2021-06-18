@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css">
+</head>
+<body>
+
+    <div class="list-field">
+        <h1>Create List</h1>
+        <div class="list-container"></div>
+        <form action="" class="list-form">
+            <input type="text" placeholder="Create list ..." class="input-list">
+            <button class="submit-list btn"><i class="far fa-arrow-alt-circle-right"></i></button>
+        </form>
+    </div>
+    <div class="todo-field">
+        <h2 class="list-name"></h2>
+        <div class="todo-container"></div>
+        <form action="" class="todo-form">
+            <input type="text" placeholder="Create todo ..." class="input-todo">
+            <button class="submit-todo btn"><i class="far fa-arrow-alt-circle-right"></i></button>
+        </form>
+        <button class="rmvClrdTodosBtn">Remove cleared todos</button>
+    </div>
+    <div class="resetStorage"></div>
+    <script src="/app.js"></script>
+</body>
+</html>

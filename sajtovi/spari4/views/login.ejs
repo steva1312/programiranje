@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Пријава</title>
+</head>
+
+<body>
+    <div class="card">
+        <h1 class="main-header">Пријава на налог</h1>
+
+        <% if (success_msg != '') { %>
+            <h2 class="success-msg msg">
+                <%= success_msg %>
+            </h2>
+        <% } %>
+
+        <% if (login_error != '') { %>
+            <h2 class="error-msg msg">
+                <%= login_error %>
+            </h2>
+        <% } %>
+
+        <form action="/login" method="POST">
+            <div>
+                <label for="username">Корисничко име:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">Шифра:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="acc-button">Проследи</button>
+        </form>
+
+        <a href="/register">Уколико немаш налог, направи га овде.</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+:root {
+    --bg: #071e3d;
+    --primary: #1f4287;
+    --secondary: #278ea5;
+    --lightest: #21e6c1;
+}
+
+body {
+    background: url(circle-blues.png);
+}
+body::before {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%; 
+    background-color: #000;
+    opacity: .5;
+}
+.login {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.login header {
+    color: var(--secondary);
+    font-size: 2.3em;
+    line-height: 90%;
+    margin-bottom: 2%;
+}
+.login-input {
+    background: transparent;
+    border: 3px solid var(--primary);
+    width: 100%;
+    height: 2.5rem;
+    padding: 2%;
+    outline: none;
+    color: var(--secondary);
+    font-size: 1.25em;
+}
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-form button {
+    margin-top: 10px;
+    background: transparent;
+    border: solid 3px var(--primary);
+    color: var(--secondary);
+    height: 2.5rem;
+    font-size: 1.25rem;
+    transition: .3s ease-out all;
+    padding: 2%;
+}
+.login-form button:hover {
+    background-color: var(--secondary);
+    color: var(--bg);
+    border: solid 3px var(--secondary);
+}
+.join {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    left: 60%;
+}
+.join header {
+    color: var(--secondary);
+    font-size: 2.3em;
+}
+.join-input {
+    background: transparent;
+    border: 3px solid var(--primary);
+    width: 100%;
+    height: 2.5rem;
+    padding: 2%;
+    outline: none;
+    color: var(--secondary);
+    font-size: 1.25em;
+}
+.join-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.join-form button {
+    background: transparent;
+    border: solid 3px var(--primary);
+    color: var(--secondary);
+    height: 2.5rem;
+    font-size: 1.25rem;
+    transition: .3s ease-out all;
+    padding: 2%;
+    width: 4.5rem;
+    margin-left: 10px;
+}
+.join-form button:hover {
+    background-color: var(--secondary);
+    color: var(--bg);
+    border: solid 3px var(--secondary);
+}
+.status-index {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translateY(-50%);
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.status-index > div header {
+    color: var(--primary);
+    font-size: 1.8em;
+}
+.status-index > div {
+    position: relative;
+    display: flex;
+}
+i {
+    background-color: var(--secondary);
+    color: var(--primary);
+    font-size: 3em;
+    padding: 5%;
+    width: 1.5em;
+    text-align: center;
+    border-radius: 20%;
+}
+.con {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: 500%;
+    padding-left: 20%;
+    background-color: var(--secondary);
+    opacity: .9;
+    border-radius: 20px;
+    height: 15rem;
+}
+.status-index > div:hover .con {
+    opacity: 1;
+    visibility: visible;
+}
+i + span {
+    width: 20px;
+}
+.sender {
+    font-size: 1.3em !important;
+    color: var(--lightest) !important;
+}
+.msg-text {
+    font-size: 1.3em !important;
+    color: var(--primary) !important;
+}
+.chat-input {
+    background: transparent;
+    border: 3px solid var(--primary);
+    width: 60%;
+    height: 2rem;
+    padding: 2%;
+    outline: none;
+    color: var(--bg);
+    font-size: 1.2em;
+}
+.chat-form {
+    display: flex;
+    align-items: center;
+}
+.chat-input + button {
+    background: transparent;
+    border: solid 3px var(--primary);
+    color: var(--primary);
+    font-size: 1.2rem;
+    transition-property: background-color color;
+    height: 2rem;
+    width: 20%;
+    margin-left: 2%;
+}
+.chat-input + button:hover {
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+.chat-input::placeholder {
+    color: #1f4287;
+}
+.room-el {
+    color: #21e6c1 !important;
+    font-size: 1.5em !important;
+}
+.con > div {
+    height: 70%;
+    overflow-y: scroll;
+    width: 95%;
+}
+
+
+.topic {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.status {
+    display: flex;
+    margin: 20px;
+}
+.status  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+.status div:first-child {
+    margin-bottom: 5px;
+}
+.table {
+    display: grid;
+    width: 300px;
+    height: 300px;
+    background-color: var(--secondary);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 3px;
+}
+.tab {
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    font-weight: bolder;
+    color: var(--lightest);
+}
+.xoro-turn {
+    font-size: 1.8em;
+    margin-top: 20px;
+}
+.game-over {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.msg-el {
+    display: flex;
+}
+.user-name,
+.opponent-name {
+    color: var(--primary);
+}
+.user-score,
+.opponent-score {
+    color: var(--secondary);
+}
+
+.err {
+    border: 3px solid red;
+}
+.err::placeholder {
+    color: red;
+}
+
+
+.chat-room {
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+}
+.chat-room header {
+    color: var(--primary);
+    font-size: 2em;
+}
+.chatbox + form input {
+    color: var(--secondary) !important;
+}
+.chatbox {
+    height: 300px;
+    overflow-y: scroll;
+    width: 400px;
+}
+.chatbox header {
+    color: var(--secondary);
+}
+.msg {
+    width: 380px;
+    word-break: break-all;
+    font-size: 1.5em !important;
+}
+.typer {
+    text-align: end;
+}

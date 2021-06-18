@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Leaderboard</title>
+</head>
+<body>
+    <heder class="main-header">Leaderboard</heder>
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Username</th>
+            <th>Score</th>
+        </tr>
+        <% let place = 1 %> 
+        <% users.forEach(user => { %>
+            <% if(username === user.username) {%> 
+                <tr>
+                    <td class="user"><%= place %> </td>
+                    <td class="user"><%= user.username %></td>
+                    <td class="user"><%= user.score %></td>
+                </tr>
+            <% } else {%>
+                <tr>
+                    <td><%= place %> </td>
+                    <td><%= user.username %></td>
+                    <td><%= user.score %></td>
+                </tr>
+            <% } %>
+            <% place++ %> 
+        <% }) %> 
+    </table>
+
+    <script src="/animation.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" href="/style.css">
+    <title>Home</title>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="/leaderboard">Leaderboard</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/about">About</a></li>
+            <li><form action="/account/logout?_method=DELETE" method="POST">
+                <button type="submit">Log Out</button>
+            </form></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="welcome">
+            <header class="main-header">Welcome to an online tic-tac-toe game!</header>
+            <p>Stevin-Iks-Oks is website for playing tic-tac-toe with players on different devices. You can see who else is active on the website. If user's name is green, it means the user is on homepage. If name is yellow, user is in room. You can also see which rooms exist and who is in them. For more information about this website and me visit 'about' page.</p>
+            <p>When you lose the game, you lose 2 points. If you win, you receive 2 points. If the game is a draw, you get only 1 point. You can see everyone's score on 'leadboard' page.</p>
+            <p>Note that you aren't able to connect to the website on 2 different tabs. If you want to connect on the same device twice, you can open 2 different windows with different google (or any other browser) accounts.</p>
+        </div>
+        <div class="wraper">
+            <div class="join">
+                <header class="main-header" style="text-align: left; display: inline;">Join Room</header>
+                <p style="width: 450px;">If you want to make a room, type any room's name that you wish. But if you want to join one, type room's name that already exists.</p>
+                <form class="main-form" action="/room"method="POST" style="display: flex;">
+                    <input class="main-input" type="text" name="join" style="height: 60px; display: block;margin-right: 2%;">
+                    <button type="submit">Join</button>
+                </form>
+            </div>
+            <di class="topics">
+                <div class="users">
+                    <i class="fas fa-users"></i>
+                    <span></span>
+                    <div class="con">
+                        <header class="card-header">Active Users</header>
+                        <div class="users-con"></div>
+                    </div>
+                </div>
+                <div class="spaceplz"></div>
+                <div class="rooms">
+                    <i class="fas fa-boxing-glove"></i>
+                    <span></span>
+                    <div class="con">
+                        <header class="card-header">Existable Rooms</header>
+                        <div class="rooms-con"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const USERNAME = '<%- username %>'
+    </script>
+    <script src="/animation.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/index.js"></script>
+</body>
+</html>

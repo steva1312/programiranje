@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>room</title>
+</head>
+<body>
+    <div class="game">
+        <header class="waiting" style="color: #278ea5;">Waiting for another player to join ...</header>
+        <div class="topic">
+            <div class="status">
+                <div class="user">
+                    <h2 class="user-name"></h2>
+                    <h2 class="user-score">0</h2>
+                </div>
+                <div class="marks">
+                    <h2 style="color: #1f4287;">VS</h2>
+                    <h2 style="color: #278ea5;">:</h2>
+                </div>
+                <div class="opponent">
+                    <h2 class="opponent-name"></h2>
+                    <h2 class="opponent-score">0</h2>
+                </div>
+            </div>
+            <div class="table"></div>
+            <header class="xoro-turn" style="color: #1f4287;"></header>
+            <div class="game-over">
+                <h2 class="end-type" style="color: #1f4287;"></h2>
+                <h2 style="color: #278ea5;">New game will start in:</h2>
+                <h4 class="counter" style="color: #278ea5;">10</h4>
+            </div>
+            <div class="chat-room">
+                <header>Chat with your opponent</header>
+                <div class="chatbox"></div>
+                <form action="" class="chat-form">
+                    <input type="text" class="chat-input" placeholder="Type message ...">
+                    <button>Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <header class="full" style="display: none; color: #278ea5;">The room you are trying to join is full. Why don't make one?</header>
+    <header class="alone" style="display: none; color: #278ea5;"></header>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="room.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    min-height: 100vw;
+    background: rgb(83, 123, 209);
+}
+
+.none {
+    display: none;
+}
+
+.todoContainer {
+    margin-top: 2%;
+    width: 60%;
+}
+
+.todo {
+    color: white;
+    font-family: sans-serif;
+    border: turquoise 3px solid;
+    border-radius: 10px;
+    margin-bottom: 1%;
+    display: flex;
+    justify-content: space-between;
+    padding: 2%;
+    align-items: center;
+}
+
+.removeBtn {
+    transform: rotate(45deg);
+    font-size: 2em;
+}
+
+.todoNum {
+    color: white;
+}
+
+.numCon {
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
